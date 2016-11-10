@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the Taxonomy Manager feature.
+ */
+
+include_once 'luggage_taxonomy_manager.features.inc';
+
+/**
+ * Implements hook_permission().
+ */
+function luggage_taxonomy_manager_permission() {
+  return array (
+    'access taxonomy manager view' => array (
+      'title' => t('Access taxonomy manager view'),
+    ),
+  );
+}

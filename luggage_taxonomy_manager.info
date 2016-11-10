@@ -1,0 +1,16 @@
+name = luggage_taxonomy_manager
+description = Provides a view for bulk editing of taxonomy terms
+core = 7.x
+package = Luggage
+version = 7.x-1.0
+dependencies[] = features
+dependencies[] = luggage_roles
+dependencies[] = term_merge
+dependencies[] = views
+dependencies[] = views_bulk_operations
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[user_permission][] = access taxonomy manager view
+features[views_view][] = taxonomy_manager
+features_exclude[dependencies][ctools] = ctools
+features_exclude[dependencies][luggage_taxonomy_manager] = luggage_taxonomy_manager
