@@ -205,6 +205,62 @@ function luggage_taxonomy_manager_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Bulk operations: Taxonomy term */
+  $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['display_type'] = '0';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['enable_select_all_pages'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['row_clickable'] = 1;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['force_single'] = 0;
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_settings']['entity_load_capacity'] = '10';
+  $handler->display->display_options['fields']['views_bulk_operations']['vbo_operations'] = array(
+    'action::term_merge_action' => array(
+      'selected' => 1,
+      'postpone_processing' => 0,
+      'skip_confirmation' => 0,
+      'override_label' => 0,
+      'label' => '',
+    ),
+  );
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid']['separator'] = '';
+  /* Field: Taxonomy term: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['name']['alter']['text'] = '<pre><a href="taxonomy/term/[tid]">[name]</a> [tid: [tid]]</pre>';
+  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  /* Field: Taxonomy vocabulary: Name */
+  $handler->display->display_options['fields']['name_1']['id'] = 'name_1';
+  $handler->display->display_options['fields']['name_1']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['fields']['name_1']['field'] = 'name';
+  $handler->display->display_options['fields']['name_1']['label'] = 'Vocabulary';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['relationship'] = 'nid';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['relationship'] = 'nid';
+  /* Field: Taxonomy term: Term description */
+  $handler->display->display_options['fields']['description']['id'] = 'description';
+  $handler->display->display_options['fields']['description']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['description']['field'] = 'description';
+  $handler->display->display_options['fields']['description']['label'] = 'Edit Term';
+  $handler->display->display_options['fields']['description']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['description']['alter']['text'] = '<a href="taxonomy/term/[tid]/edit?destination=taxonomy-manager">edit</a>';
+  $handler->display->display_options['fields']['description']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['path'] = 'taxonomy-manager';
 
   /* Display: Attachment */
